@@ -1,10 +1,10 @@
 import React from 'react';
-// import s from './Tags.scss';
+import './Tags.scss';
 
 
 export const Tags = () => {
     return (
-        <div>
+        <div className='wrapperTags'>
 
         </div>
     );

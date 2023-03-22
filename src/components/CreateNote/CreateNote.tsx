@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
-// import s from './CreateNote.scss';
+import './CreateNote.scss';
 
+type PropsCreateNoteType = {
+    noteText: string,
+    tags: Array<string>,
+    setNoteText: (value: string) => void,
+    handleSubmit: () => void,
+    setTags: (value: Array<string>) => void
+}
 
-export const CreateNote = () => {
+export const CreateNote = ({ noteText, setNoteText, handleSubmit, tags, setTags }: PropsCreateNoteType) => {
 
-    const [noteText, setNoteText] = useState<string>('');
-    const [tags, setTags] = useState<Array<string>>([]);
-
-    const handleOnChange = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
+    const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const textareaValue = e.target.value;
-        const regex = /#\w+/g; 
+        const regex = /#\w+/g;
         const matchedTags = textareaValue.match(regex) || [];
 
         setTags(matchedTags);
@@ -18,11 +22,11 @@ export const CreateNote = () => {
 
 
     return (
-        <div>
+        <div className='wrapperCreateNote'>
             <textarea value={noteText} onChange={handleOnChange}>
                 Write your note...
             </textarea>
-            <button onClick={() => { }}>Save</button>
+            <button onClick={handleSubmit}>Save</button>
 
             {tags.map(tag => <div key={tag}>{tag}</div>)}
 
