@@ -22,7 +22,8 @@ export const Notes = ({ notes, setcurrentEditNote, deleteNote }: PropsNotesType)
                     </div>
                     {note.note}
                     <div>
-                        {}
+                        __________________
+                        теги, которые есть в заметке
                     </div>
                 </div>)
             }

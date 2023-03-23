@@ -16,12 +16,14 @@ function App() {
 
   const [noteText, setNoteText] = useState<string>('');
   const [tags, setTags] = useState<Array<string>>([]);
+  // const [tagsList, setTagsList] = useState<Array<string>>([]);
   const [notes, setNotes] = useState<Array<NoteType>>([]);
   const [currentEditNote, setcurrentEditNote] = useState<NoteType | null>(null);
 
   const saveNote = () => {
     setNotes([...notes, {id: id, note: noteText}]);
     setNoteText('');
+    setTags([]);
   }
 
   const editNote = () => {
@@ -32,6 +34,8 @@ function App() {
 
   const deleteNote = (id: string) => {
     setNotes(notes.filter(note => note.id !== id));
+    setcurrentEditNote(null);
+    setNoteText('');
   }
 
   useEffect(()=> {
@@ -44,7 +48,7 @@ function App() {
         <CreateNote noteText={noteText} setNoteText={setNoteText}
           handleSubmit={currentEditNote ? editNote : saveNote} tags={tags} setTags={setTags}
         />
-        <Tags />
+        <Tags tags={tags} setTags={setTags} />
       </div>
       <Notes  notes={notes} setcurrentEditNote={setcurrentEditNote} deleteNote={deleteNote} />
     </div>
