@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import './App.scss';
 import { v1 } from 'uuid';
 import { CreateNote } from './components/CreateNote/CreateNote';
 import { Notes } from './components/Notes/Notes';
@@ -54,7 +54,9 @@ function App() {
         <Tags tagsList={tagsList} setTagsList={setTagsList}
         inputTagValue={inputTagValue} setInputTagValue={setInputTagValue} />
       </div>
+      <div className='secondBlock'>
       <Notes  notes={notes} setcurrentEditNote={setcurrentEditNote} deleteNote={deleteNote} />
+      </div>
     </div>
   );
 }
