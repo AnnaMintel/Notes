@@ -2,26 +2,42 @@ import React from 'react';
 import './Tags.scss';
 
 type PropsTagsType = {
-    tags: string[],
-    setTags: (value: string[]) => void
+    tagsList: string[],
+    inputTagValue: string,
+    setTagsList: (value: string[]) => void,
+    setInputTagValue: (value: string) => void
 }
 
-export const Tags = ({ tags, setTags }: PropsTagsType) => {
+export const Tags = ({ tagsList, setTagsList, inputTagValue, setInputTagValue }: PropsTagsType) => {
 
-    const deleteTag = (index: number) => {
-        const newTags:any = [...tags];
-        setTags(newTags.splice(index, 1));
-    }
+    const onTagChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        setInputTagValue(e.target.value);
+    };
+
+    const addTag = () => {
+        if (inputTagValue.trim()) {
+            setTagsList([...tagsList, inputTagValue.trim()]);
+            setInputTagValue('');
+        }
+    };
+
+    const deleteTag = (tagToDelete: string) => {
+        setTagsList(tagsList.filter((tag) => tag !== tagToDelete));
+    };
 
     return (
         <div className='wrapperTags'>
             <div>
-                {tags.map((tag, index) => <div className='tag' key={tag}>
-                    {tag}
-                    <button onClick={() => deleteTag(index)}>X</button>
-                </div>)}
+                <input type="text" value={inputTagValue} onChange={onTagChange} />
+                <button onClick={addTag}>Add tag</button>
             </div>
-
+            <div>
+                {tagsList.map((tag) => (
+                    <div className='tag' key={tag}>
+                        {tag} <button onClick={() => deleteTag(tag)}>X</button>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
