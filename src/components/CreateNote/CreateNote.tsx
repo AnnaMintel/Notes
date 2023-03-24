@@ -1,6 +1,7 @@
 import React from "react";
 import { NoteType } from "../../App";
 import "./CreateNote.scss";
+import { HighlightWithinTextarea } from 'react-highlight-within-textarea';
 
 type PropsCreateNoteType = {
   noteText: string;
@@ -12,25 +13,27 @@ type PropsCreateNoteType = {
   cancelEdit: () => void;
 };
 
-export const CreateNote = ({ noteText, setNoteText, handleSubmit, tags, setTags, currentEditNote, cancelEdit }: PropsCreateNoteType) => {
-  const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const textareaValue = e.target.value;
+export const CreateNote = ({ noteText, setNoteText, handleSubmit, tags, setTags,
+                             currentEditNote, cancelEdit }: PropsCreateNoteType) => {
+  const handleOnChange = (textareaValue: any) => {
     const regex = /#\w+/g;
     const matchedTags = textareaValue.match(regex) || [];
-
     //@ts-ignore
     setTags([...new Set(matchedTags)] as Array<string>);
 
-    setNoteText(e.currentTarget.value);
+    setNoteText(textareaValue);
   };
 
   return (
     <div className="wrapperCreateNote">
       <div className="createNoteBlock">
-        <div className="textBlock">
-          <textarea value={noteText} onChange={handleOnChange} placeholder="Enter the note">
-            Write your note...
-          </textarea>
+        <div className="textBlock DraftEditor-root">
+          <HighlightWithinTextarea
+            value={noteText}
+            highlight={/#\w+/g}
+            onChange={handleOnChange}
+            placeholder="Enter the note"
+          />
           <div className="tags">
             {tags.map((tag, i) => (
               <div className="tag" key={i}>
