@@ -1,4 +1,6 @@
-export const mockNotes = [
+{
+    "mockNotes":    
+    [
         {
             "id": "1",
             "note": "This is my first #note",
@@ -10,3 +12,4 @@ export const mockNotes = [
             "noteTags": ["#awesome"]
         }
     ]
+}

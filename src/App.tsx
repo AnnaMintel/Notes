@@ -4,8 +4,6 @@ import { v1 } from "uuid";
 import { CreateNote } from "./components/CreateNote/CreateNote";
 import { Notes } from "./components/Notes/Notes";
 import { Tags } from "./components/Tags/Tags";
-import { mockNotes } from "./mockData/notes";
-import { mockTags } from "./mockData/tags";
 
 export type NoteType = {
   id: string;
@@ -18,8 +16,8 @@ export type FilterType = "All" | string;
 function App() {
   const [noteText, setNoteText] = useState<string>("");
   const [tags, setTags] = useState<Array<string>>([]);
-  const [tagsList, setTagsList] = useState<Array<string>>(mockTags); //!
-  const [notes, setNotes] = useState<Array<NoteType>>(mockNotes); //!
+  const [tagsList, setTagsList] = useState<Array<string>>([]);
+  const [notes, setNotes] = useState<Array<NoteType>>([]); 
   const [filteredNotes, setFilteredNotes] = useState<Array<NoteType>>(notes);
   const [filter, setFilter] = useState<FilterType>("All");
 
@@ -62,9 +60,11 @@ function App() {
     currentEditNote && setTags(currentEditNote.noteTags);
   }, [currentEditNote]);
 
-  // useEffect(() => {
-  //   fetch("./mockData/notes.json").then(res => console.log(res.json()))
-  // }, []);
+  useEffect(() => {
+    fetch("/notes.json").then(res => res.json()).then(data => setNotes(data.mockNotes));
+    fetch("/tags.json").then(res => res.json()).then(data => setTags(data.mockTags));
+  }, []);
+;
 
   useEffect(() => {
     setFilteredNotes(notes);
