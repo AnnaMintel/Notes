@@ -1,48 +1,123 @@
-// .wrapperCreateNote {
-//     width: 300px;
-//     height: 180px;
-//     border: 2px solid green;
-// }
-
 .wrapperCreateNote {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .createNoteBlock {
+    margin: 40px 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  
-    textarea {
-      width: 100%;
-      height: 200px;
-      margin-bottom: 20px;
+    align-items: start;
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+    }
+
+    .textBlock {
       padding: 10px;
-      border: 1px solid #ccc;
-      font-size: 18px;
-      resize: none;
-  
-      &:focus {
+
+      textarea {
+        font-size: 16px;
+        color: #0b1329;
+        height: 70px;
+        padding: 15px 55px 15px 15px;
+        border: none;
+        border-radius: 4px 0px 0px 4px;
+        background-color: #ffffff;
         outline: none;
-        border-color: #0066ff;
+        resize: vertical;
+        width: 500px;
+        font-size: 16px;
+
+        @media (max-width: 640px) {
+          width: 300px;
+        }
+      }
+      .tags {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+        .tag {
+          font-weight: 500;
+          margin-right: 5px;
+          border-radius: 5px;
+          background-color: #e8e8e8;
+        }
       }
     }
-  
-    button {
-      padding: 10px;
-      font-size: 16px;
-      border: none;
-      border-radius: 3px;
-      background-color: #0066ff;
-      color: #fff;
-      cursor: pointer;
-  
-      &:hover {
-        background-color: #0047b3;
+
+    .createControls {
+      display: flex;
+      flex-direction: column;
+
+      @media (max-width: 640px) {
+        flex-direction: row;
       }
-    }
-  
-    div {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #666;
+
+      button {
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        padding: 12px;
+        width: 80px;
+        background-color: #eb2f52;
+        margin: 10px;
+        font-family: Roboto;
+        font-size: 16px;
+        font-weight: 500;
+        outline: none;
+
+        &.cancel {
+          background-color: #004085;
+        }
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
   }
-  
+}
+
+// .wrapperCreateNote {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     padding: 20px;
+
+//     textarea {
+//       width: 100%;
+//       height: 200px;
+//       margin-bottom: 20px;
+//       padding: 10px;
+//       border: 1px solid #ccc;
+//       font-size: 18px;
+//       resize: none;
+
+//       &:focus {
+//         outline: none;
+//         border-color: #0066ff;
+//       }
+//     }
+
+//     button {
+//       padding: 10px;
+//       font-size: 16px;
+//       border: none;
+//       border-radius: 3px;
+//       background-color: #0066ff;
+//       color: #fff;
+//       cursor: pointer;
+
+//       &:hover {
+//         background-color: #0047b3;
+//       }
+//     }
+
+//     div {
+//       margin-top: 10px;
+//       font-size: 14px;
+//       color: #666;
+//     }
+//   }

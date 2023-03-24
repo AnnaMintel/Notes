@@ -1,59 +1,16 @@
-// .wrapperNotes {
-//     width: 1000px;
-//     height: 50vh;
-//     border: 2px solid red;
-//     display: flex;
-    
-//     .note {
-//         width: 150px;
-//         height: 200px;
-//         border: 1px solid black;
-//         margin: 10px;
-
-//     }
-// }
-
 .wrapperNotes {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .notesBlock {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-  
-    .note {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px;
-      border: 1px solid #ccc;
-      width: 300px;
-      height: 200px;
-  
-      button {
-        margin-right: 5px;
-        margin-top: 10px;
-        padding: 5px;
-        font-size: 14px;
-        border: none;
-        border-radius: 3px;
-        background-color: #f2f2f2;
-        cursor: pointer;
-  
-        &:hover {
-          background-color: #e6e6e6;
-        }
-      }
-  
-      p {
-        margin-top: 20px;
-        font-size: 18px;
-      }
-  
-      .tags {
-        margin-top: 20px;
-        font-size: 14px;
-        color: #666;
-      }
-    }
+    max-width: 1200px;
+    margin: 40px 0;
+
   }
-  
+}
