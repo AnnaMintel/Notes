@@ -32,7 +32,6 @@ export const CreateNote = ({ noteText, setNoteText, handleSubmit, tags, setTags,
             value={noteText}
             highlight={/#\w+/g}
             onChange={handleOnChange}
-            placeholder="Enter the note"
           />
           <div className="tags">
             {tags.map((tag, i) => (

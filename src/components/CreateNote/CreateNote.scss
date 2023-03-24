@@ -26,6 +26,14 @@
       background-color: #f8f8f8;
       resize: none;
 
+      .public-DraftEditorPlaceholder-root {
+        display: none;
+      }
+
+      .DraftEditor-editorContainer div {
+        height: 100px;
+      }
+
       @media (max-width: 640px) {
         width: 300px;
       }

@@ -37,7 +37,8 @@ function App() {
 
   const editNote = () => {
     setNotes(notes.map((note) => (note.id === currentEditNote?.id ? { ...note, note: noteText, noteTags: tags } : note)));
-    setTagsList([...tagsList.concat(tags)]);
+    //@ts-ignore
+    setTagsList([...new Set([...tagsList.concat(tags)])] as Array<string>);
     setTags([]);
 
     setNoteText("");
